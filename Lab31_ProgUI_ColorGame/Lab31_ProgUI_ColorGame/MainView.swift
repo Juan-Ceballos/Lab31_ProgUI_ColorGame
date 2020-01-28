@@ -14,7 +14,10 @@ class MainView: UIView {
     //imageView composed of color rgb
     // 3 buttons representing rgb
     
-    private lazy var colorView: UIView =    {
+    
+    let guessMessage = "Guess Dominant Color"
+    
+    public lazy var colorView: UIView =    {
         let view = UIView()
         view.backgroundColor = .systemGray
         return view
@@ -38,7 +41,11 @@ class MainView: UIView {
         return blueButton
     }()
     
-    
+    private lazy var messageLabel: UILabel =    {
+        let guessLabel = UILabel()
+        guessLabel.text = guessMessage
+        return guessLabel
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
@@ -53,6 +60,7 @@ class MainView: UIView {
     private func commonInit()    {
         setupColorViewConstraints()
         setupButtonConstraints()
+        setUpGuessLabelConstraints()
     }
     
     
@@ -89,6 +97,19 @@ class MainView: UIView {
             greenButton.leadingAnchor.constraint(equalTo: blueButton.trailingAnchor, constant: 20),
             greenButton.topAnchor.constraint(equalTo: colorView.bottomAnchor, constant: 20)
 
+        ])
+    }
+    
+    private func setUpGuessLabelConstraints()   {
+        addSubview(messageLabel)
+        
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+        
+            messageLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            messageLabel.topAnchor.constraint(equalTo: redButton.bottomAnchor, constant: 20)
+            
         ])
     }
 }

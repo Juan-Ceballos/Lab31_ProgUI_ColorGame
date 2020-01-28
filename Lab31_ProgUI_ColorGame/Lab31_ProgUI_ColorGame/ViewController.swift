@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let colorGuessGenerator = ColorGuessingModel()
 
     private let mainView = MainView()
     
@@ -19,7 +21,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.backgroundColor = .systemOrange
+        view.backgroundColor = .systemTeal
+        mainView.colorView.backgroundColor = colorGuessGenerator.getNewColor()
     }
 
 
